@@ -1,0 +1,22 @@
+{% autoescape off %}
+
+Hi {{user.name}},
+Your order with orderid : {{oder.order_id}} has been placed successfully.
+
+Your order consists of -
+{% for i in order.Product_set.all %}
+
+Product:{{i.product}} Quantity:{{i.quantity}} Price:{{i.price}}
+
+{% endfor %}
+
+Total:{{order.total_amount}}
+
+oder will reach to you in 5-7 days.
+
+we have attached the invoice for your oder with this mail.
+
+thanks for trusting us and using our services.
+
+
+{% autoescape %}

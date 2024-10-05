@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+
+
+<!-- Mirrored from template.hasthemes.com/hmart/hmart/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Sep 2021 18:04:02 GMT -->
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <meta name="robots" content="index, follow" />  
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />   
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font.awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/venobox.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.min.css' %}">   
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">      
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+</head>
+
+<body>
+    
+        <header>
+            <!-- Header top area start -->
+            <div class="header-top">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col">
+                            <div class="welcome-text">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="col d-none d-lg-block">
+                            <div class="top-nav">
+                                <ul>                                 
+                                    <li><a href="{% url 'contact' %}"><i class="fa fa-unlock"></i>Contact</a></li>
+                                    <li><a href=""><i class="fa fa-unlock"></i>About</a></li>
+                                    {% if user.is_authenticated %}
+                                    <li><a href="{% url 'logout' %}"><i class="fa fa-unlock"></i>Logout</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'login' %}"><i class="fa fa-lock"></i>Login</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header top area end -->
+            <!-- Header action area start -->
+            <div class="header-bottom  d-none d-lg-block">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-3 col">
+                            <div class="header-logo">
+                                <a href="{% url 'index' %}"><img src="" >Eshop</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="search-element">
+                                <form action="/search/" method="get">
+                                    <input type="text" placeholder="Search" name="Query"id=Query/>
+                                    <button><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col">
+                            <div class="header-actions">
+                               
+                                <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                                    <i class="pe-7s-shopbag"></i>
+                                    <span class="header-action-num">{{request.session.cart|length}}</span>
+                                    <!-- <span class="cart-amount">€30.00</span> -->
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header action area end -->
+            <!-- Header action area start -->
+            <div class="header-bottom d-lg-none sticky-nav style-1">
+                <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-3 col">
+                            <div class="header-logo">
+                                <a href="index.html"><img src="{% static 'assets/images/logo/logo.png' %}" alt="Site Logo" /></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <div class="search-element">
+                                <form action="#">
+                                    <input type="text" placeholder="Search" />
+                                    <button><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col">
+                            <div class="header-actions">
+                                <!-- Single Wedge Start -->                               
+                                <!-- Single Wedge End -->
+                                <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                                    <i class="pe-7s-shopbag"></i>
+                                    <span class="header-action-num">{{request.session.cart|length}}</span>
+                                    <!-- <span class="cart-amount">€30.00</span> -->
+                                </a>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header action area end -->
+            <!-- header navigation area start -->
+            <div class="header-nav-area d-none d-lg-block sticky-nav">
+                <div class="container">
+                    <div class="header-nav">
+                        <div class="main-menu position-relative">
+                            <ul>
+                                <li><a href="{% url 'index' %}">Home</a></li>
+                                
+                                <li><a href="{% url 'product' %}"> All Product</a></li>
+                                <li class="dropdown position-static"><a href="#">category<i class="fa fa-angle-down"></i></a>
+                                 
+                                    <ul class="mega-menu d-block">
+                                        <li class="d-flex">
+                                            <ul class="d-block">
+                                                <li class="title"><a href="{% url 'meanswear' %}">MeansWear</a></li>
+                                                                                             
+                                            </ul>
+                                            <ul class="d-block">
+                                                <li class="title"><a href="{% url 'product' %}">Electronics</a></li>
+                                                                                            
+                                            </ul>
+                                            <ul class="d-block">
+                                                <li class="title"><a href="#">Home Appliances</a></li>
+                                                                                              
+                                            </ul>
+                                            <ul class="d-block p-0 border-0">
+                                                <li class="title"><a href="#">Grocery</a></li>
+                                                                                               
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>                                  
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- header navigation area end -->
+           
+            </div>
+        </header>
+       
+        
+        <!-- OffCanvas Cart Start -->
+        {% load cart_tag %}
+
+        
+
+        <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
+            <div class="inner">
+                <div class="head">
+                    <span class="title">Cart</span>
+                    <button class="offcanvas-close">×</button>
+                </div>
+                <div class="body customScroll">
+                    <ul class="minicart-product-list">
+                    {% if request.session.cart|length < 1 %} 
+                      
+                        <div class="empty-cart-area pb-100px pt-100px">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="cart-heading">
+                                            <h2>Your cart item</h2>
+                                        </div>
+                                        <div class="empty-text-contant text-center">
+                                            <i class="pe-7s-shopbag"></i>
+                                            <h3>There are no more items in your cart</h3>
+                                            <a class="empty-cart-btn" href="{% url 'product' %}">
+                                                <i class="fa fa-arrow-left"> </i> Continue shopping
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    {% else %}    
+                        {% for key,value in request.session.cart.items %}
+                        <li>
+                            <a href="" class="image"><img src="{{ value.image }}" alt="Cart product Image"></a>
+                            <div class="content">
+                                <a href="" class="title">{{value.name | truncatewords:5}}</a>
+                                <span class="quantity-price">{{value.quantity}} x<span class="amount">Rs.{{value.price}}</span></span>
+                                <a href="{% url 'item_clear' key  %}" class="remove">×</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+
+                    {% endif %}
+                       
+                    </ul>
+                </div>
+                <div class="foot">
+                    <div class="buttons mt-30px">
+                        <a href="{% url 'cart' %}" class="btn btn-dark btn-hover-primary mb-30px">view cart</a>
+                        <form method="post"action="{% url 'checkout'  %}">
+                            {% csrf_token %}
+                            <input value="{{cart_total_amount}}" name="amount" hidden>
+                            <a class="btn btn-outline-dark current-btn"><button type="submit" class="text-light">checkout</button></a>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+{% block content %}{% endblock content %}
+
+
+            <!-- Footer Area Start -->
+        <div class="footer-area">
+                <div class="footer-container">
+                    
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="line-shape-top line-height-1">
+                                <div class="row flex-md-row-reverse align-items-center">
+                                    <div class="col-md-6 text-center text-md-end">
+                                        <div class="payment-mth"><a href="#"><img class="img img-fluid" src="ststic 'assets/images/icons/payment.png" alt="payment-image"></a></div>
+                                    </div>
+                                    <div class="col-md-6 text-center text-md-start">
+                                        <p class="copy-text"> © 2023 <strong>Eshop</strong><i class="fa fa-heart"
+                                            aria-hidden="true"></i><a class="" href="">
+                                                <strong></strong></a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Area End -->
+        </div>
+        <!-- Modal -->
+        {% for i in product %}   
+        <div class="modal modal-2 fade" id="exampleModal-{{forloop.counter}}" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                                <!-- Swiper -->
+                                <div class="swiper-container gallery-top">
+                                    <div class="swiper-wrapper">
+                                        {% for img in i.images_set.all %}
+                                        <div class="swiper-slide">
+                                            <img class="img-responsive m-auto" src="/{{img.image}}"alt="">
+                                        </div> 
+                                        {% endfor %}                                     
+                                    </div>
+                                </div>
+                                <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
+                                    <div class="swiper-wrapper">
+                                        {% for img in i.images_set.all %}
+                                        <div class="swiper-slide">
+                                            <img class="img-responsive m-auto" src="/{{img.image}}" alt="">
+                                        </div> 
+                                        {% endfor %}                              
+                                    </div>
+
+
+                                    <!-- Add Arrows -->
+                                    <div class="swiper-buttons">
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                <div class="product-details-content quickview-content">
+                                    <h2>{{i.name | truncatewords:5}}</h2>
+                                    <div class="pricing-meta">
+                                        <ul class="d-flex">
+                                            <li class="new-price">Rs.{{i.price}}</li>
+                                        </ul>
+                                    </div>
+                                   
+                                    <p class="mt-30px">{{i.description | truncatewords:15}}</p>
+                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                       
+                                    </div>
+                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                        <span>Categories: </span>
+                                        <ul class="d-flex">
+                                            <li>
+                                                <a href="#">{{i.categories}}</a>
+                                            </li>
+                                          
+                                        </ul>
+                                    </div>
+                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                        <span>Tags: </span>
+                                        <ul class="d-flex">
+                                            <li>
+                                                {% for tag in i.tag_set.all %}
+                                                <a href="">{{tag.name}}, </a>
+                                                {% endfor %}
+                                            </li>                                          
+                                        </ul>
+                                    </div>
+                                    <div class="pro-details-quality">
+                                        <div class="cart-plus-minus">
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                        </div>
+                                        <div class="pro-details-cart">
+                                            <a href="{% url 'cart_add' i.id %}" class=" btn-btn-primary mb-30px">Add To cart</a>
+                                        </div>  
+                                                                        
+                                    </div>
+                                    <div class="payment-img">
+                                        <a href="#"><img src="{% static 'assets/images/icons/payment.png' %}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Modal end -->
+        <!-- Modal Cart -->
+        {% for i in product %}
+        <div class="modal customize-class fade" id="exampleModal-Cart-{{forloop.counter}}" tabindex="-1"   aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="pe-7s-close"></i></button>
+                        <div class="tt-modal-messages">
+                            <i class="pe-7s-check"></i> Added to cart successfully!
+                        </div>
+                        <div class="tt-modal-product">
+                            <div class="tt-img">
+                                <img src="/{{i.image}}" alt="">
+                            </div>
+                            <h2 class="tt-title"><a href="#">{{i.name | truncatewords:7}}</a></h2>
+                            <br>
+                            <a href ="{% url 'cart_add' i.id %}">Add To cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        {% endfor %}
+
+    <script src="{% static 'assets/js/vendor/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/modernizr-3.11.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/scrollUp.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/venobox.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins/mailchimp-ajax.js' %}"></script>  
+    <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.min.js' %}"></script>
+
+</body>
+</html>    
